@@ -1,5 +1,5 @@
 #include<stdio.h>
-int sudoku[9][9];
+int sudoku[10][10];
 bool check_sudoku(int x, int y, int value) //coordinate, value
 {
 	int i, j;
@@ -22,7 +22,9 @@ bool check_sudoku(int x, int y, int value) //coordinate, value
 }
 int main()
 {
-	int x, y;
+	int x, y,fd;
+ 
+
 	while()
 	{
 		if(check_sudoku(x, y, value))
