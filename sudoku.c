@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <stdbool.h>
 int sudoku[10][10];
 void showSudoku()
 {
@@ -51,10 +52,10 @@ bool check_sudoku(int x, int y, int value) //coordinate, value
 }
 int main()
 {
-	int x, y,fd;
+	int x, y,value;
+	showSudoku();
 	while(1)
 	{
-		showsudoku();
 		if(check_sudoku(x, y, value))
 		{
 			sudoku[x][y]=value;
