@@ -9,25 +9,37 @@ void showSudoku()
 	char buf[90];
         FILE *fp;
         int i,j,k=1;
-        fp = fopen("ex1.txt","r");
+	int ans =0;
+
+	printf("Select Sudoku- Easy : 1,2 Medium : 3,4 Hard : 5 , 6 Stop : 999 \n");
+        scanf("%d", &ans);
+
+        fp = fopen("ex2.txt","r");
+
         if(fp == NULL)
         {
                 perror("FILE OPEN ERROR\n");
                 exit(0);
         }
-
-        fgets(buf,sizeof(buf),fp);
-        fclose(fp);
-
+	if(ans ==999)
+	{
+		return;
+	}
+	for(i=0; i< ans; i++)
+	{
+		fgets(buf,sizeof(buf),fp);
+        }
+	fclose(fp);
+	printf("------ You choose '%d' Question ------\n",ans);
 	for(i=0; i<9; i++)
-        {
-                for(j=0; j<9; j++)
-                {
-                        k++;
-                       	q_sudoku[i][j]=buf[k];
-                        printf("%c",q_sudoku[i][j]);
-                }
-                printf("\n");
+       	{
+	      	for(j=0; j<9; j++)
+              	{
+              		k++;
+              		q_sudoku[i][j]=buf[k];
+                     	printf("%c",q_sudoku[i][j]);
+               	}
+               	printf("\n");
         }
 }
 bool check_sudoku(int x, int y, int value) //coordinate, value
