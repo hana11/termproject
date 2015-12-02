@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <stdbool.h>
 int sudoku[10][10]={0,}, t_sudoku[10][10], ans, life;
+void start_sudoku();
 void show_sudoku();
 void get_sudoku();
 bool check_sudoku(int x, int y, int value);
 void undo_sudoku(int undo_x, int undo_y);
-
 typedef struct _log
 {
 	int x;
 	int y;
 }log;
-
 void get_sudoku()
 {
 	int i, j, k=1;
