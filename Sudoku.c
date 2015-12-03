@@ -15,13 +15,12 @@ typedef struct _log
 }log;
 void get_sudoku()
 {
-	int i, j, k=1;
+	int i, j, k=1, zero=0;
 	char buf[90];
 	FILE *fp;
 
 	printf("Select Sudoku- Easy : 1,2  Medium : 3,4  Hard : 5,6  Stop : 999 \n");
 	scanf("%d", &ans);
-	life = 30-(ans+1)/2*5;
 	fp = fopen("ex2.txt","r");
 
 	if(fp == NULL)
@@ -44,9 +43,14 @@ void get_sudoku()
 			k++;
 			sudoku[i][j]=buf[k]-48;
 			t_sudoku[i][j]=sudoku[i][j];
+			if(t_sudoku[i][j]==0)
+			{
+				zero++;
+			}
 		}
 	}
 	fclose(fp);
+	life = zero-(ans+1)*7;
 	printf("------ You choose '%d' Question ------\n",ans);
 	show_sudoku();
 }
@@ -101,7 +105,7 @@ void start_sudoku()
 		클라이언트로부터 x, y, value 값 받아옴
 
 		**************************************/
-		printf("if value is -1, undo 1 step\n");
+		printf("if value is -1, undo 1 step and  99 is giveup\n");
 		printf("enter values (x, y, value) :");
 		scanf("%d %d %d", &x, &y, &value);
 		//만족하는 값이 하나라도 있어야 함
@@ -113,6 +117,11 @@ void start_sudoku()
 			else
 				printf("cannot undo. re-enter values\n");
 			show_sudoku();
+		}
+		if(value == 99)
+		{
+			printf("You give up the game.\n");
+			return ;
 		}
 		else
 		{
