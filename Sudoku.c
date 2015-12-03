@@ -3,11 +3,11 @@
 #include <errno.h>
 #include <stdbool.h>
 int sudoku[10][10]={0,}, t_sudoku[10][10], ans, life;
-void start_sudoku();
 void show_sudoku();
 void get_sudoku();
 bool check_sudoku(int x, int y, int value);
 void undo_sudoku(int undo_x, int undo_y);
+void start_sudoku();
 typedef struct _log
 {
 	int x;
@@ -140,7 +140,7 @@ void start_sudoku()
 						printf("wrong number\n");
 						life--;
 					}
-					printf("remain life : %d\n", life); 
+					printf("remain life : %d\n", life);
 				}
 				else
 				{

@@ -1,9 +1,5 @@
 #include "Sudoku.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
-void start_sudoku();
-void main()
+int main()
 {
 	start_sudoku();
 }
