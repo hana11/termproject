@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <stdbool.h>
-
-
 int sudoku[10][10]={0,}, t_sudoku[10][10], ans, life;
 void show_sudoku();
 void get_sudoku();
@@ -15,13 +13,14 @@ typedef struct _log
 	int x;
 	int y;
 }log;
-void get_sudoku(int _level)
+void get_sudoku()
 {
 	int i, j, k=1, zero=0;
 	char buf[90];
 	FILE *fp;
 
-
+	printf("Select Sudoku- Easy : 1,2  Medium : 3,4  Hard : 5,6  Stop : 999 \n");
+	scanf("%d", &ans);
 	fp = fopen("ex2.txt","r");
 
 	if(fp == NULL)
@@ -29,11 +28,11 @@ void get_sudoku(int _level)
 		perror("FILE OPEN ERROR\n");
 		exit(0);
 	}
-	if(_level ==999)
+	if(ans ==999)
 	{
 		return;
 	}
-	for(i=0; i< _level; i++)
+	for(i=0; i< ans; i++)
 	{
 		fgets(buf,sizeof(buf),fp);
 	}
@@ -51,8 +50,8 @@ void get_sudoku(int _level)
 		}
 	}
 	fclose(fp);
-	life = zero-(_level+1)*7;
-	printf("------ You choose '%d' Question ------\n",_level);
+	life = zero-(ans+1)*7;
+	printf("------ You choose '%d' Question ------\n",ans);
 	show_sudoku();
 }
 void show_sudoku()
@@ -92,14 +91,13 @@ void undo_sudoku(int undo_x, int undo_y)
 {
 	sudoku[undo_x][undo_y] = 0;
 }
-void start_sudoku(int level)
+void start_sudoku()
 {
 	int x, y, value, i, input_cnt=0;
 	bool ch;
 	log input_log[81];
-	get_sudoku(level);
+	get_sudoku();
 
-	
 	while(1)
 	{
 		/*************************************
