@@ -73,6 +73,7 @@ exit(-1);
 		if(level>0 && level<=6)
 		{
 		start_sudoku(level);
+		write(clnt_sock, message, n);
 		}
 		//close(clnt_sock);
 		}

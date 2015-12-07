@@ -112,6 +112,11 @@ void start_sudoku(int level)
 		scanf("%d %d %d", &x, &y, &value);
 		//만족하는 값이 하나라도 있어야 함
 		ch=0;
+		if(input_cnt==81)
+		{	
+			
+			break;
+		}
 		if(value==-1)
 		{
 			if(input_cnt>0)
