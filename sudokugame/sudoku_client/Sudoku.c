@@ -92,7 +92,7 @@ void undo_sudoku(int undo_x, int undo_y)
 {
 	sudoku[undo_x][undo_y] = 0;
 }
-int start_sudoku(int level)
+void start_sudoku(int level)
 {
 	int x, y, value, i, j, input_cnt, zero_cnt;
 	bool ch;
@@ -170,5 +170,5 @@ int start_sudoku(int level)
 			}
 		}
 	}
-	return 999;
+
 }

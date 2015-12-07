@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 	socklen_t clnt_adr_sz;
 	char message[BUF_SIZE];
 	int str_len, i;
+	int start_flag=0;
 	if (argc != 3)
 	{
 		printf("Usage:%s<port>\n", argv[0]);
@@ -64,11 +65,16 @@ int main(int argc, char *argv[])
 			message[n] = '\0';
 			printf("receive : %s", message);
 			level = message[0]-48;
-	
-			if(level>0 && level<7)
+			if(strstr(message,"start"))
 			{
+				start_flag =1;
+			}
+
+			if(level>0 && level<7 && start_flag==1)
+			{
+
 				start_sudoku(level);
-			
+
 				write(clnt_sock, "finish", n);
 			}
 			//close(clnt_sock);
